@@ -54,5 +54,5 @@ class openstack::profile::ceilometer::api {
     require       => [Class['mongodb::server'], Class['mongodb::client']],
   }
 
-  Class['::mongodb::server'] -> Class['::mongodb::client'] -> Exec['ceilometer-dbsync']
+  Class['::mongodb::globals'] -> Class['::mongodb::server'] -> Class['::mongodb::client'] -> Exec['ceilometer-dbsync']
 }

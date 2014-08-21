@@ -11,6 +11,11 @@ class openstack::profile::mongodb {
     is ${explicit_address}. Please correct this difference.")
   }
 
+  class {'::mongodb::globals':
+    manage_package_repo => false,
+    before => [ Class['::mongodb::server'], Class['::mongodb::client'] ],
+  }
+
   class { '::mongodb::server':
     bind_ip => ['127.0.0.1', $::openstack::config::controller_address_management],
   }
