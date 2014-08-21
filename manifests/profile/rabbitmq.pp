@@ -6,7 +6,6 @@ class openstack::profile::rabbitmq {
 	  package { 'erlang':
 	    ensure  => installed,
 	    before  => Package['rabbitmq-server'],
-	    require => Yumrepo['erlang-solutions'],
 	  }
   }
 
