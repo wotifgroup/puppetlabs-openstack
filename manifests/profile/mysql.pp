@@ -1,5 +1,6 @@
 # The profile to install an OpenStack specific mysql server
 class openstack::profile::mysql {
+  openstack::resources::firewall { 'MySQL': port => '3306', }
 
   $management_network = $::openstack::config::network_management
   $inferred_address = ip_for_network($management_network)
